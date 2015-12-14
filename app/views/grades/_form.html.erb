@@ -1,0 +1,45 @@
+<%= form_for(@grade) do |f| %>
+  <% if @grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
+
+      <ul>
+      <% @grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :orientation %><br>
+    <%= f.check_box :orientation %>
+  </div>
+  <div class="field">
+    <%= f.label :exco_fair %><br>
+    <%= f.check_box :exco_fair %>
+  </div>
+  <div class="field">
+    <%= f.label :agreement %><br>
+    <%= f.check_box :agreement %>
+  </div>
+  <div class="field">
+    <%= f.label :midterm_eval %><br>
+    <%= f.text_field :midterm_eval %>
+  </div>
+  <div class="field">
+    <%= f.label :auditing %><br>
+    <%= f.text_field :auditing %>
+  </div>
+  <div class="field">
+    <%= f.label :final_eval %><br>
+    <%= f.text_field :final_eval %>
+  </div>
+  <div class="field">
+    <%= f.label :final_paper %><br>
+    <%= f.text_field :final_paper %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

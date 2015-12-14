@@ -1,0 +1,61 @@
+<%= form_for(@instructor_app) do |f| %>
+  <% if @instructor_app.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instructor_app.errors.count, "error") %> prohibited this instructor_app from being saved:</h2>
+
+      <ul>
+      <% @instructor_app.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :course %><br>
+    <%= f.text_field :course %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :semester %><br>
+    <%= f.text_field :semester %>
+  </div>
+  <div class="field">
+    <%= f.label :tnumber %><br>
+    <%= f.text_field :tnumber %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_area :status %>
+  </div>
+  <div class="field">
+    <%= f.label :qualifications %><br>
+    <%= f.text_area :qualifications %>
+  </div>
+  <div class="field">
+    <%= f.label :teaching_exp %><br>
+    <%= f.text_area :teaching_exp %>
+  </div>
+  <div class="field">
+    <%= f.label :problems %><br>
+    <%= f.text_area :problems %>
+  </div>
+  <div class="field">
+    <%= f.label :excos_taken %><br>
+    <%= f.text_area :excos_taken %>
+  </div>
+  <div class="field">
+    <%= f.label :exco_problems %><br>
+    <%= f.text_area :exco_problems %>
+  </div>
+  <div class="field">
+    <%= f.label :safe_space %><br>
+    <%= f.text_area :safe_space %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

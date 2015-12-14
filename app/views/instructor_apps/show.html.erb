@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @instructor_app.course %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @instructor_app.year %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @instructor_app.semester %>
+</p>
+
+<p>
+  <strong>Tnumber:</strong>
+  <%= @instructor_app.tnumber %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @instructor_app.status %>
+</p>
+
+<p>
+  <strong>Qualifications:</strong>
+  <%= @instructor_app.qualifications %>
+</p>
+
+<p>
+  <strong>Teaching exp:</strong>
+  <%= @instructor_app.teaching_exp %>
+</p>
+
+<p>
+  <strong>Problems:</strong>
+  <%= @instructor_app.problems %>
+</p>
+
+<p>
+  <strong>Excos taken:</strong>
+  <%= @instructor_app.excos_taken %>
+</p>
+
+<p>
+  <strong>Exco problems:</strong>
+  <%= @instructor_app.exco_problems %>
+</p>
+
+<p>
+  <strong>Safe space:</strong>
+  <%= @instructor_app.safe_space %>
+</p>
+
+<%= link_to 'Edit', edit_instructor_app_path(@instructor_app) %> |
+<%= link_to 'Back', instructor_apps_path %>

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @new_course.name %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @new_course.semester %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @new_course.year %>
+</p>
+
+<p>
+  <strong>Divison:</strong>
+  <%= @new_course.divison %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @new_course.description %>
+</p>
+
+<p>
+  <strong>Why exco:</strong>
+  <%= @new_course.why_exco %>
+</p>
+
+<p>
+  <strong>Evaluations:</strong>
+  <%= @new_course.evaluations %>
+</p>
+
+<p>
+  <strong>Credits:</strong>
+  <%= @new_course.credits %>
+</p>
+
+<p>
+  <strong>Hours meet:</strong>
+  <%= @new_course.hours_meet %>
+</p>
+
+<p>
+  <strong>Hours outside:</strong>
+  <%= @new_course.hours_outside %>
+</p>
+
+<p>
+  <strong>Capactiy:</strong>
+  <%= @new_course.capactiy %>
+</p>
+
+<p>
+  <strong>Signature:</strong>
+  <%= @new_course.signature %>
+</p>
+
+<%= link_to 'Edit', edit_new_course_path(@new_course) %> |
+<%= link_to 'Back', new_courses_path %>

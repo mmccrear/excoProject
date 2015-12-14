@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  orientation: false
+  exco_fair: false
+  agreement: false
+  midterm_eval: 1.5
+  auditing: 1.5
+  final_eval: 1.5
+  final_paper: 1.5
+
+two:
+  orientation: false
+  exco_fair: false
+  agreement: false
+  midterm_eval: 1.5
+  auditing: 1.5
+  final_eval: 1.5
+  final_paper: 1.5

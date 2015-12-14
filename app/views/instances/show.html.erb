@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @instance.year %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @instance.semester %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @instance.location %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @instance.time %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @instance.section %>
+</p>
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

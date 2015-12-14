@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course: MyString
+  year: 1
+  semester: MyString
+  tnumber: MyString
+  status: MyText
+  qualifications: MyText
+  teaching_exp: MyText
+  problems: MyText
+  excos_taken: MyText
+  exco_problems: MyText
+  safe_space: MyText
+
+two:
+  course: MyString
+  year: 1
+  semester: MyString
+  tnumber: MyString
+  status: MyText
+  qualifications: MyText
+  teaching_exp: MyText
+  problems: MyText
+  excos_taken: MyText
+  exco_problems: MyText
+  safe_space: MyText

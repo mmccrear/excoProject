@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Orientation:</strong>
+  <%= @grade.orientation %>
+</p>
+
+<p>
+  <strong>Exco fair:</strong>
+  <%= @grade.exco_fair %>
+</p>
+
+<p>
+  <strong>Agreement:</strong>
+  <%= @grade.agreement %>
+</p>
+
+<p>
+  <strong>Midterm eval:</strong>
+  <%= @grade.midterm_eval %>
+</p>
+
+<p>
+  <strong>Auditing:</strong>
+  <%= @grade.auditing %>
+</p>
+
+<p>
+  <strong>Final eval:</strong>
+  <%= @grade.final_eval %>
+</p>
+
+<p>
+  <strong>Final paper:</strong>
+  <%= @grade.final_paper %>
+</p>
+
+<%= link_to 'Edit', edit_grade_path(@grade) %> |
+<%= link_to 'Back', grades_path %>

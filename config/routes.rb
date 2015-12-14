@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :instructors
+  resources :new_courses
+  resources :instructor_apps
+  resources :instances
+  resources :grades
+  resources :courses
   resources :application_renewals
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

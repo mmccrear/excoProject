@@ -1,0 +1,2 @@
+module NewCoursesHelper
+end

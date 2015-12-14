@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Grades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Orientation</th>
+      <th>Exco fair</th>
+      <th>Agreement</th>
+      <th>Midterm eval</th>
+      <th>Auditing</th>
+      <th>Final eval</th>
+      <th>Final paper</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades.each do |grade| %>
+      <tr>
+        <td><%= grade.orientation %></td>
+        <td><%= grade.exco_fair %></td>
+        <td><%= grade.agreement %></td>
+        <td><%= grade.midterm_eval %></td>
+        <td><%= grade.auditing %></td>
+        <td><%= grade.final_eval %></td>
+        <td><%= grade.final_paper %></td>
+        <td><%= link_to 'Show', grade %></td>
+        <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
+        <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grade', new_grade_path %>
