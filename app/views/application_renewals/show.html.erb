@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @application_renewal.name %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @application_renewal.semester %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @application_renewal.year %>
+</p>
+
+<p>
+  <strong>Credits:</strong>
+  <%= @application_renewal.credits %>
+</p>
+
+<p>
+  <strong>Capactiy:</strong>
+  <%= @application_renewal.capactiy %>
+</p>
+
+<p>
+  <strong>Problems:</strong>
+  <%= @application_renewal.problems %>
+</p>
+
+<p>
+  <strong>Changes:</strong>
+  <%= @application_renewal.changes %>
+</p>
+
+<p>
+  <strong>Engagement:</strong>
+  <%= @application_renewal.engagement %>
+</p>
+
+<%= link_to 'Edit', edit_application_renewal_path(@application_renewal) %> |
+<%= link_to 'Back', application_renewals_path %>

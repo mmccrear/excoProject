@@ -1,0 +1,49 @@
+<%= form_for(@application_renewal) do |f| %>
+  <% if @application_renewal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application_renewal.errors.count, "error") %> prohibited this application_renewal from being saved:</h2>
+
+      <ul>
+      <% @application_renewal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :semester %><br>
+    <%= f.text_field :semester %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :credits %><br>
+    <%= f.number_field :credits %>
+  </div>
+  <div class="field">
+    <%= f.label :capactiy %><br>
+    <%= f.number_field :capactiy %>
+  </div>
+  <div class="field">
+    <%= f.label :problems %><br>
+    <%= f.text_area :problems %>
+  </div>
+  <div class="field">
+    <%= f.label :changes %><br>
+    <%= f.text_area :changes %>
+  </div>
+  <div class="field">
+    <%= f.label :engagement %><br>
+    <%= f.text_area :engagement %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
