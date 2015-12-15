@@ -1,3 +1,4 @@
+<div class = "container">
 <%= form_for(@new_course) do |f| %>
   <% if @new_course.errors.any? %>
     <div id="error_explanation">
@@ -10,56 +11,113 @@
       </ul>
     </div>
   <% end %>
+ <div class = "form-group">
+        <h3>Course Information</h3> <br>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <label for= "name">
+            <b>Title of course</b>
+            <p> This must be the official course title. No abbreviations, please.</p></label><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :semester %><br>
-    <%= f.text_field :semester %>
+      <%= f.radio_button :semester, "Fall", :checked => true %> Fall &nbsp;
+      <%= f.radio_button :semester, "Spring" %> Spring
+      
   </div>
   <div class="field">
     <%= f.label :year %><br>
     <%= f.number_field :year %>
   </div>
+</div>
+<hr>
+    <div class = "form-group ">
+<h3>Instructor(s)</h3>
+<p>Please select instructors from drop down menu or some shit</p>
+    <b>Instructor 1:</b> 
+        <select name = "instructor1">
+            <%= options_for_select(@instructors1.map{ |i| [i.name, i.id]}) %>
+        </select><br>
+        
+        <select name = "instructor2">
+            <%= options_for_select(@instructors1.map{ |i| [i.name, i.id]}) %>
+        </select><br>
+    
+    <b>Instructor 2: </b>
+drop down menu for instructors um<br>
+<br>
+
+If there are multiple instructors for the course, only one of you can be responsible for registration and grades on PRESTO.<br>
+    <label for="presto">Presto responsibility: </label><br>
+    <input type = "radio" name = "presto" value = "Instructor 1" checked> Instructor 1 <br>
+    <input type = "radio" name = "presto" value = "Instructor 2"> Instructor 2 <br>
+    </div>
+    
+    <hr>
+
+<div class = "form-group row">
+    <h3>Course Details</h3>
   <div class="field">
-    <%= f.label :divison %><br>
-    <%= f.text_field :divison %>
+    <label for="division">What division would you like your course to be listed under in the ExCo Course Catalog?</label><br>
+      <%= f.radio_button :divison, "Community and Society", :checked => true %> Community and Society<br>
+      <%= f.radio_button :divison, "Language, Culture, and Religion" %> Language, Culture, and Religion<br>
+      <%= f.radio_button :divison, "Computer, Math, and Science" %> Computer, Math, and Science<br>
+      <%= f.radio_button :divison, "Media and Literature" %> Media and Literature<br>
+      <%= f.radio_button :divison, "Dance and Theater" %> Dance and Theater<br>
+      <%= f.radio_button :divison, "Music" %> Music<br>
+      <%= f.radio_button :divison, "Arts, Crafts, and Do-It-Yourself" %> Arts, Crafts, and Do-It-Yourself<br>
+      <%= f.radio_button :divison, "Physical Activities, Mindfulness, and Games" %> Physical Activities, Mindfulness, and Games<br><br>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <label for="description">
+    <b>Briefly describe your course.</b> <br>
+    Note - this is not your ExCo Catalog description. We will ask for that later on in the application process.<br>
+    </label><br>
+    <%= f.text_area :description, :rows => 10, :cols => 80 %><br><br>
   </div>
   <div class="field">
-    <%= f.label :why_exco %><br>
-    <%= f.text_area :why_exco %>
+    <label for="why_exco">
+    <b>Why should this class be an ExCo?</b><br>
+    Other than the fact that the college doesn't teach the material, or that it's "interesting," or that it "should be taught."
+        </label><br>
+    <%= f.text_area :why_exco, :rows => 10, :cols => 80 %><br><br>
   </div>
   <div class="field">
-    <%= f.label :evaluations %><br>
-    <%= f.text_area :evaluations %>
+    <label for="evaluations">
+    <b>How will you formally evaluate your students accomplishments?</b><br>
+    Please be specific as to how many exams, papers, performances, etc., you will require. Note: class attendance is expected and <b>not</b> considered a method of evaluation.<br>
+        </label>
+    <%= f.text_area :evaluations, :rows => 10, :cols => 80 %><br><br>
   </div>
   <div class="field">
-    <%= f.label :credits %><br>
-    <%= f.number_field :credits %>
+    <label for="credits">
+    <b>For how many credits should this course be offered?</b><br>
+        Note that two credit courses are much more rigorous than one credit courses (refer to course guidelines for more information). New courses are rarely allowed to be taught for two credits.</label><br>
+    <%= f.number_field :credits %><br><br>
   </div>
   <div class="field">
-    <%= f.label :hours_meet %><br>
-    <%= f.number_field :hours_meet %>
+    <label for = "hours_meet">How many hours per week do you plan to meet?</label><br>
+    <%= f.number_field :hours_meet %><br><br>
   </div>
   <div class="field">
-    <%= f.label :hours_outside %><br>
-    <%= f.number_field :hours_outside %>
+    <label for = "hours_outside">How many hours per week of outside work will you expect from your students?</label><br>
+    <%= f.number_field :hours_outside %><br><br>
   </div>
   <div class="field">
-    <%= f.label :capactiy %><br>
-    <%= f.number_field :capactiy %>
+    <label for = "capactiy">What should be the maximum number of students in your class?</label><br>
+    <%= f.number_field :capactiy %><br><br>
   </div>
   <div class="field">
-    <%= f.label :signature %><br>
-    <%= f.text_field :signature %>
+    <label for = "signature">
+    <b>If this course in any way duplicates material or topic of any course offered in a regular oberlin curriculum, you must have it approved by the appropriate department chairperson.</b><br>
+    If you are seeking approval, please list the chairperson's name below. They must email exco@oberlin.edu to confirm that they will allow the course. Or sign something. We'll see.<br>
+        </label>
+    <%= f.text_field :signature %><br><br>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+    </div>
 <% end %>
+    </div>

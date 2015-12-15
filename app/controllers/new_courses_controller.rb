@@ -15,6 +15,8 @@ class NewCoursesController < ApplicationController
   # GET /new_courses/new
   def new
     @new_course = NewCourse.new
+    @instructors1 = Instructor.all
+    @instructors2 = InstructorApp.all
   end
 
   # GET /new_courses/1/edit

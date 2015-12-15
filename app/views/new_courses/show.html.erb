@@ -1,22 +1,19 @@
+<div class = "container">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Course Title:</strong>
   <%= @new_course.name %>
 </p>
 
 <p>
   <strong>Semester:</strong>
-  <%= @new_course.semester %>
+  <%= @new_course.semester %> <%= @new_course.year %>
 </p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @new_course.year %>
-</p>
 
 <p>
-  <strong>Divison:</strong>
+  <strong>Division:</strong>
   <%= @new_course.divison %>
 </p>
 
@@ -62,3 +59,5 @@
 
 <%= link_to 'Edit', edit_new_course_path(@new_course) %> |
 <%= link_to 'Back', new_courses_path %>
+    
+</div>
