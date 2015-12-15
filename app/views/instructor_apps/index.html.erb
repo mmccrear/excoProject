@@ -1,47 +1,76 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Instructor Application Form") %>
+<% require 'date' %>
 
-<h1>Listing Instructor Apps</h1>
+<h1>Instructor Application Form</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Course</th>
-      <th>Year</th>
-      <th>Semester</th>
-      <th>Tnumber</th>
-      <th>Status</th>
-      <th>Qualifications</th>
-      <th>Teaching exp</th>
-      <th>Problems</th>
-      <th>Excos taken</th>
-      <th>Exco problems</th>
-      <th>Safe space</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="instructor_app_form">
 
-  <tbody>
-    <% @instructor_apps.each do |instructor_app| %>
-      <tr>
-        <td><%= instructor_app.course %></td>
-        <td><%= instructor_app.year %></td>
-        <td><%= instructor_app.semester %></td>
-        <td><%= instructor_app.tnumber %></td>
-        <td><%= instructor_app.status %></td>
-        <td><%= instructor_app.qualifications %></td>
-        <td><%= instructor_app.teaching_exp %></td>
-        <td><%= instructor_app.problems %></td>
-        <td><%= instructor_app.excos_taken %></td>
-        <td><%= instructor_app.exco_problems %></td>
-        <td><%= instructor_app.safe_space %></td>
-        <td><%= link_to 'Show', instructor_app %></td>
-        <td><%= link_to 'Edit', edit_instructor_app_path(instructor_app) %></td>
-        <td><%= link_to 'Destroy', instructor_app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% curYear = Time.now.year %>
+  <% years = Array.new()%>
+  <% for i in -2..3 %>
+    <% years<<[curYear+i,curYear+i] %>
+  <% end %>
+  
+  <%= form_tag({}, :class=>'form-horizontal') do %>
+    <div class="form-group row">
+      <%= label_tag('app[course]', "Title of Course:", class:"col-lg-2 form-control-label") %>
+ 
+        <%= text_field_tag('app[course]', nil, class:'form-control col-lg-8') %>
+    
+    </div>
+    
+    <div class="form-group row">
+      <%= label_tag('app[semester]', "Semester of Course:", class:"col-md-4 form-control-label") %>
+      <div class="col-md-8">
+        <div class="radio">
+          <%= radio_button_tag('app[semester]', "fall") %>
+          <%= label_tag('app[semester_fall]', "Fall") %>
+        </div>
+        <div class="radio">
+          <%= radio_button_tag('app[semester]', "spring") %>
+          <%= label_tag('app[semester_spring]', "Spring") %>
+        </div>
+      </div>
+    </div>
 
-<br>
+    <div class="form-group row">
+      <%= label_tag('app[year]', "Year of Course:", class:"col-md-4 form-control-label") %>
+      <div class="col-md-8">
+      <%= select_tag('app[year]', options_for_select(years, curYear), {class: "dropdown-menu form-control"}) %> 
+    </div>
+        
+    <div class="form-group row">
+    <%= label_tag('app[qualifications]', "How did you acquire interest and skill in this subject area? How long have you been involved?") %>
+    <%= text_area_tag('app[qualifications]', nil, class:"form-control") %>
+    </div>
+    
+    <div class="form-group row">
+    <%= label_tag('app[teaching_exp', "Have you had any experience as an activity or class instructor? Please be specific concerning dates and places, and include a description of your role.") %>
+    <%= text_area_tag('app[teaching_exp]') %>
+    </div>
+    
+    <div class="form-group row">
+    <%= label_tag('app[problems]', "What problems do you foresee as a course instructor?") %>
+    <%= text_area_tag('app[problems]') %>
+    </div>
+    
+    <div class="form-group row">
+    <%= label_tag('app[excos_taken]', "Have you taken an ExCo course before? If yes, please specify which one(s) and when.") %>
+    <%= text_area_tag('app[excos_taken]') %>
+    </div>
 
-<%= link_to 'New Instructor app', new_instructor_app_path %>
+    <div class="form-group row">
+    <%= label_tag('app[exco_problems]', "What problems did you encounter in your role as a student in the ExCo course(s) and what would you do as an instructor to avoid these problems?") %>
+    <%= text_area_tag('app[exco_problems]') %>
+    </div>
+
+    <div class="form-group row">
+    <%= label_tag('app[safe_space]', "Define what you believe a safe space would look like in the context of your class.") %>
+    <%= text_area_tag('app[safe_space]') %>
+    </div>
+    
+    <div class="form-group row">
+    <%= submit_tag "Save", :action => 'update' %>
+    </div>
+  <% end %>
+</div>    
