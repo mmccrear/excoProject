@@ -7,16 +7,9 @@ Rails.application.routes.draw do
   resources :grades
   resources :courses
   resources :application_renewals
-<<<<<<< HEAD
-  #resources :users
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
-=======
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users
   
->>>>>>> 6170aac6da1a57225c3fec8f66566dc6af5cd1e8
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
