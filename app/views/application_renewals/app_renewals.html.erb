@@ -1,0 +1,40 @@
+<html>
+
+<head>
+<h1>Application Renewal</h1>
+<h2>Experimental College</h2>
+</head>
+
+<body>
+
+	<p>If you are teaching a course that has been taught within the past four years, and you are working from that course's syllabus, this is the form for you. Otherwise, you should fill out a New Course Application instead. Make sure your application is complete by referring to our Application Guidelines page. <b>You must resubmit an updated syllabus.</b></p>
+
+<%= form_tag({}, :class=>'form-horizontal') do %>
+	Official Title of Course: <input type="text" name="name"><br>
+	Semester: <input type="text" name="semester"><br>
+	Year: <input type="number" name="year" min="2015" max="2016">
+
+	<h5>Instructor Name</h5>
+
+	<h3>Questions</h3>
+
+	<p>For how many credits do you want the course to be offered? Most courses are taught for 1 credit, though academic courses can be taught for 2 credits under the conditions defined in our Course Guidelines sheet.</p>
+	<input type="number" name="credits" min="0" max="2">
+
+	<p>What is your course enrollment limit? The limit is usually 15 students per instructor.</p>
+	<input type="number" name="capacity" min="5" max="20">
+
+	<p>What were the major problems with this class the last time it was offered? How will you try to solve them for next semester?</p>
+	<textarea name="problems" rows="4" cols="50"></textarea>
+
+	<p>What changes are you making to the course, if any?</p>
+	<textarea name="changes" rows="4" cols="50"></textarea>
+
+	<p>How do you think that the students felt about this course the last time it was taught? Were the students engaged in the course? Do you think that all students felt comfortable with the course material and in class?</p>
+	<textarea name="engagment" rows="4" cols="50"></textarea>
+
+	<%=submit_tag "Submit", :action => 'update' %>
+<%end%>
+
+</body>
+</html>		

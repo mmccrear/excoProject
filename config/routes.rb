@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :grades
   resources :courses
   resources :application_renewals
-  resources :users
+  #resources :users
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

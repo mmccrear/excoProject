@@ -69,6 +69,6 @@ class ApplicationRenewalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def application_renewal_params
-      params.require(:application_renewal).permit(:name, :semester, :year, :credits, :capactiy, :problems, :changes, :engagement)
+      params.require(:application_renewal).permit(:name, :semester, :year, :credits, :capactiy, :problems, :dbowie, :engagement)
     end
 end
