@@ -65,4 +65,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  #get '/renewal' => 'application_renewals#app_renewals'
+  #get '/new_courses/new' => 'new_courses#new_courses'
+  #post '/new_courses/new' => 'new_courses#show'
 end

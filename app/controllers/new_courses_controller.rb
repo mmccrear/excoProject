@@ -10,11 +10,15 @@ class NewCoursesController < ApplicationController
   # GET /new_courses/1
   # GET /new_courses/1.json
   def show
+    @new_course = NewCourse.find(params[:id])
+    @instructors = @new_course.instructor_app_id
   end
 
   # GET /new_courses/new
   def new
     @new_course = NewCourse.new
+    @instructors1 = InstructorApp.all
+    @instructors2 = InstructorApp.all
   end
 
   # GET /new_courses/1/edit
@@ -25,6 +29,8 @@ class NewCoursesController < ApplicationController
   # POST /new_courses.json
   def create
     @new_course = NewCourse.new(new_course_params)
+    #only saving 1 instructor right now... not sure where/how to save a second instructor.
+    @new_course.instructor_app_id = params[:instructor1]
 
     respond_to do |format|
       if @new_course.save
@@ -69,6 +75,6 @@ class NewCoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def new_course_params
-      params.require(:new_course).permit(:name, :semester, :year, :divison, :description, :why_exco, :evaluations, :credits, :hours_meet, :hours_outside, :capactiy, :signature)
+      params.require(:new_course).permit(:name, :semester, :year, :instructor1, :instructor2, :divison, :description, :why_exco, :evaluations, :credits, :hours_meet, :hours_outside, :capactiy, :signature)
     end
 end

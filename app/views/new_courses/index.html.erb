@@ -2,21 +2,12 @@
 
 <h1>Listing New Courses</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Semester</th>
-      <th>Year</th>
       <th>Divison</th>
-      <th>Description</th>
-      <th>Why exco</th>
-      <th>Evaluations</th>
-      <th>Credits</th>
-      <th>Hours meet</th>
-      <th>Hours outside</th>
-      <th>Capactiy</th>
-      <th>Signature</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,17 +16,8 @@
     <% @new_courses.each do |new_course| %>
       <tr>
         <td><%= new_course.name %></td>
-        <td><%= new_course.semester %></td>
-        <td><%= new_course.year %></td>
+        <td><%= new_course.semester %> <%= new_course.year %></td>
         <td><%= new_course.divison %></td>
-        <td><%= new_course.description %></td>
-        <td><%= new_course.why_exco %></td>
-        <td><%= new_course.evaluations %></td>
-        <td><%= new_course.credits %></td>
-        <td><%= new_course.hours_meet %></td>
-        <td><%= new_course.hours_outside %></td>
-        <td><%= new_course.capactiy %></td>
-        <td><%= new_course.signature %></td>
         <td><%= link_to 'Show', new_course %></td>
         <td><%= link_to 'Edit', edit_new_course_path(new_course) %></td>
         <td><%= link_to 'Destroy', new_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
