@@ -35,17 +35,17 @@
     <div class = "form-group ">
 <h3>Instructor(s)</h3>
 <p>Please select instructors from drop down menu or some shit</p>
-    <b>Instructor 1:</b> 
+    <label for = "instructor2">Instructor 1:</label> 
         <select name = "instructor1">
-            <%= options_for_select(@instructors1.map{ |i| [i.name, i.id]}) %>
+            <%= options_for_select(@instructors1.map{ |i| [i.course, i.id]}) %>
         </select><br>
         
-        <select name = "instructor2">
-            <%= options_for_select(@instructors1.map{ |i| [i.name, i.id]}) %>
-        </select><br>
+        
     
-    <b>Instructor 2: </b>
-drop down menu for instructors um<br>
+    <label for = "instructor2">Instructor 2: </label>
+<select name = "instructor2">
+    <%= options_for_select(@instructors1.map{ |i| [i.course, i.id]}) %>
+        </select><br>
 <br>
 
 If there are multiple instructors for the course, only one of you can be responsible for registration and grades on PRESTO.<br>
