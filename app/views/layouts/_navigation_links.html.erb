@@ -1,12 +1,11 @@
+  <li id="title_link"><%= link_to 'Exco', root_path %></li>
 <% if user_signed_in? %>
-  <li><%= link_to 'Account (' + current_user.email + ')', current_user %></li>
+  <li><%= link_to 'Account (' + current_user.email + ')', portal_path(current_user.id) %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <% if current_user.try(:admin?) %>
+    <li><%= link_to 'Comments', comments_path %></li>
+  <% end %>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <% if current_user.try(:admin?) %>
-    <li><%= link_to 'Users', users_path %></li>
-  <% end %>
 <% end %>

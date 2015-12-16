@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :portals
   resources :instructors
   resources :new_courses
   resources :instructor_apps
@@ -6,10 +7,16 @@ Rails.application.routes.draw do
   resources :grades
   resources :courses
   resources :application_renewals
+<<<<<<< HEAD
   #resources :users
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
+=======
+  devise_for :users, controllers: {registrations: 'users/registrations'}
+  resources :users
+  
+>>>>>>> 6170aac6da1a57225c3fec8f66566dc6af5cd1e8
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -65,4 +72,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  #get '/renewal' => 'application_renewals#app_renewals'
+  #get '/new_courses/new' => 'new_courses#new_courses'
+  #post '/new_courses/new' => 'new_courses#show'
 end

@@ -4,7 +4,6 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  padding: 35px;
 }
 
 p, ol, ul, td {
@@ -71,4 +70,13 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+main{
+   padding-top: 50px;
+   padding-left: 21px;
+}
+
+#title_link{
+   font-size: 22px !important;
 }
