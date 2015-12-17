@@ -1,3 +1,4 @@
+<div class = "container">
 <%= form_for(@application_renewal) do |f| %>
   <% if @application_renewal.errors.any? %>
     <div id="error_explanation">
@@ -11,39 +12,63 @@
     </div>
   <% end %>
 
+  <div class = "form-group">
+         <h3>Course Information</h3> <br>
+
   <div class="field">
-    <%= f.label :name %><br>
+    <label for= "name">
+	    <b>Name of Course</b>
+            <p> This must be the official course title. No abbreviations, please.</p></label><br>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :semester %><br>
-    <%= f.text_field :semester %>
+    <%= f.radio_button :semester, "Fall", :checked => true %> Fall &nbsp;
+    <%= f.radio_button :semester, "Spring" %> Spring
   </div>
+
   <div class="field">
     <%= f.label :year %><br>
     <%= f.number_field :year %>
   </div>
+ </div>
+<hr>
+
+  <div class = "form-group row">
+      <h3>Course Details</h3>
+
   <div class="field">
-    <%= f.label :credits %><br>
-    <%= f.number_field :credits %>
+    <label for="credits">
+    <b>For how many credits should this course be offered?</b><br>
+       Note that two credit courses are much more rigorous than one credit courses (refer to course guidelines for more information). New courses are rarely allowed to be taught for two credits.
+    </label>
+    <%= f.number_field :credits %><br><br>
   </div>
+
   <div class="field">
-    <%= f.label :capactiy %><br>
-    <%= f.number_field :capactiy %>
+    <label for = "capactiy">What should be the maximum number of students in your class?</label><br>
+    <%= f.number_field :capactiy %><br><br>
   </div>
+
   <div class="field">
-    <%= f.label :problems %><br>
-    <%= f.text_area :problems %>
+    <label for = "problems">What were the major problems with this class the last time it was offered? How will you try to solve them for next semester?</label><br>
+    <%= f.text_area :problems %><br><br>
   </div>
+
   <div class="field">
-    <%= f.label :dbowie %><br>
-    <%= f.text_area :dbowie %>
+    <label for = "dbowie">What changes are you making to the course, if any?</label><br>
+    <%= f.text_area :dbowie %><br><br>
   </div>
+
   <div class="field">
-    <%= f.label :engagement %><br>
-    <%= f.text_area :engagement %>
+    <label for = "engagement">How do you think that the students felt about this course the last time it was taught? Were the students engaged in the course? Do you think that all students felt comfortable with the course material?</label><br>
+    <%= f.text_area :engagement %><br><br>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>
+</div>

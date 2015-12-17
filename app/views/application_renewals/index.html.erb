@@ -2,17 +2,11 @@
 
 <h1>Listing Application Renewals</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Semester</th>
-      <th>Year</th>
-      <th>Credits</th>
-      <th>Capactiy</th>
-      <th>Problems</th>
-      <th>DBowie</th>
-      <th>Engagement</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +15,7 @@
     <% @application_renewals.each do |application_renewal| %>
       <tr>
         <td><%= application_renewal.name %></td>
-        <td><%= application_renewal.semester %></td>
-        <td><%= application_renewal.year %></td>
-        <td><%= application_renewal.credits %></td>
-        <td><%= application_renewal.capactiy %></td>
-        <td><%= application_renewal.problems %></td>
-        <td><%= application_renewal.dbowie %></td>
-        <td><%= application_renewal.engagement %></td>
+        <td><%= application_renewal.semester %> <%= application_renewal.year%></td>
         <td><%= link_to 'Show', application_renewal %></td>
         <td><%= link_to 'Edit', edit_application_renewal_path(application_renewal) %></td>
         <td><%= link_to 'Destroy', application_renewal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Application renewal', new_application_renewal_path %>
+<%= link_to 'New Application Renewal', new_application_renewal_path %>
