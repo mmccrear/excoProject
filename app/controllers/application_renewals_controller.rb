@@ -15,6 +15,7 @@ class ApplicationRenewalsController < ApplicationController
   # GET /application_renewals/new
   def new
     @application_renewal = ApplicationRenewal.new
+    @instances = Instance.all     #eventually filter by users
   end
 
   # GET /application_renewals/1/edit

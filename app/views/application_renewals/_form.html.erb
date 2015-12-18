@@ -19,7 +19,9 @@
     <label for= "name">
 	    <b>Name of Course</b>
             <p> This must be the official course title. No abbreviations, please.</p></label><br>
-    <%= f.text_field :name %>
+    <select name = "name">
+        <%= options_for_select(@instances.map{ |i| [i.title, i.title]}) %>
+        </select><br>
   </div>
 
   <div class="field">

@@ -31,17 +31,20 @@ class NewCoursesController < ApplicationController
 
   # GET /new_courses/1/edit
   def edit
+    @instances = Instance.all     #eventually filter by users
+    @instructors1 = InstructorApp.all   #don't know if we need to do this here? maybe in instance?
+    @instructors2 = InstructorApp.all
   end
 
   # POST /new_courses
   # POST /new_courses.json
   def create
+    
     @new_course = NewCourse.new(new_course_params)
     #only saving 1 instructor right now... not sure where/how to save a second instructor.
     @instructor_app1 = InstructorApp.find(params[:instructor1])
-    @instance = Instance.where(title: params[:name])
-    @instance.build_new_course()
-    @instance.new_course = @new_course
+    @instance = Instance.where(title: params[:name]).take
+    @instance.new_course= @new_course
     @instance.save()
     @new_course.instructor_apps << @instructor_app1
     if params[:instructor2] != "None"
