@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20151218190555) do
+
 
   create_table "application_renewals", force: :cascade do |t|
     t.string   "name"
@@ -53,12 +55,17 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.string   "location"
     t.string   "time"
     t.integer  "section"
+<<<<<<< HEAD
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "title"
     t.boolean  "renewal"
     t.text     "status"
     t.integer  "new_course_id"
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> c44caaa650a46c900f29afa1a85aed31548aaf6c
   end
 
   create_table "instructor_apps", force: :cascade do |t|
