@@ -15,6 +15,7 @@ class InstructorsController < ApplicationController
   # GET /instructors/new
   def new
     @instructor = Instructor.new
+    @users = User.all
   end
 
   # GET /instructors/1/edit
@@ -25,6 +26,8 @@ class InstructorsController < ApplicationController
   # POST /instructors.json
   def create
     @instructor = Instructor.new(instructor_params)
+    @user = User.find(params[:user])
+    #@instructor.user_id = @user.id
 
     respond_to do |format|
       if @instructor.save

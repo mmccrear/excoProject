@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  <div class ="field">
+      <label for = "title">Select a course to renew, or enter the title of a new course</label><br>
+      <select name = "title">
+            <option value = "" selected = "selected">I'm Making a New Course</option>
+          <%= options_for_select(@courses.map{ |c| [c.title, c.title]}) %>
+        </select><br>
+      New Course Title: <input type = "text" name = "new_title">
+
+</div>
 
   <div class="field">
     <%= f.label :year %><br>
@@ -17,18 +26,11 @@
   </div>
   <div class="field">
     <%= f.label :semester %><br>
-    <%= f.text_field :semester %>
+      <%= f.radio_button :semester, "Fall", :checked => true %> Fall &nbsp;
+      <%= f.radio_button :semester, "Spring" %> Spring
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
-  </div>
-  <div class="field">
-    <%= f.label :section %><br>
+    <label for = "section">Section (should be 1 unless there are multiple sections of your course)</label><br>
     <%= f.number_field :section %>
   </div>
   <div class="actions">

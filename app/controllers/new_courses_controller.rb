@@ -11,13 +11,21 @@ class NewCoursesController < ApplicationController
   # GET /new_courses/1.json
   def show
     @new_course = NewCourse.find(params[:id])
-    @instructors = @new_course.instructor_app_id
+    @instructor1 = @new_course.instructor_apps.first()
+    if @new_course.instructor_apps.at(1) != nil
+      @instructor2 = @new_course.instructor_apps.at(1)
+    else
+      @instructor2 = false
+    end
+    
+
   end
 
   # GET /new_courses/new
   def new
     @new_course = NewCourse.new
-    @instructors1 = InstructorApp.all
+    @instances = Instance.all     #eventually filter by users
+    @instructors1 = InstructorApp.all   #don't know if we need to do this here? maybe in instance?
     @instructors2 = InstructorApp.all
   end
 
@@ -30,7 +38,17 @@ class NewCoursesController < ApplicationController
   def create
     @new_course = NewCourse.new(new_course_params)
     #only saving 1 instructor right now... not sure where/how to save a second instructor.
-    @new_course.instructor_app_id = params[:instructor1]
+    @instructor_app1 = InstructorApp.find(params[:instructor1])
+    @instance = Instance.where(title: params[:name])
+    @instance.build_new_course()
+    @instance.new_course = @new_course
+    @instance.save()
+    @new_course.instructor_apps << @instructor_app1
+    if params[:instructor2] != "None"
+      @instructor_app2 = InstructorApp.find(params[:instructor2])
+      @new_course.instructor_apps << @instructor_app2
+    end
+    
 
     respond_to do |format|
       if @new_course.save

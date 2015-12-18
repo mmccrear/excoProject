@@ -12,9 +12,20 @@
 </p>
 
 <p>
-    <strong> Instructor:</strong>
-    <% @new_course.instructor_app_id %>
+    <strong> Instructor 1:</strong>
+    <%= @instructor1.course %>
 </p>
+<% if @instructor2 %>
+    <p>
+        <strong> Instructor 2:</strong>
+        <%= @instructor2.course %>
+    </p>
+<% else %>
+    <p>
+        <strong> Instructor 2:</strong>
+        None
+    </p>
+<% end %>
 <p>
   <strong>Division:</strong>
   <%= @new_course.divison %>

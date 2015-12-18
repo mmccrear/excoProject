@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Title:</strong>
+    <%= @instance.title %>
+</p>
 <p>
   <strong>Year:</strong>
   <%= @instance.year %>
@@ -24,6 +27,28 @@
   <strong>Section:</strong>
   <%= @instance.section %>
 </p>
+
+
+<table class = "table">
+    <tr>
+        <th>Component</th>
+        <th>Status</th>
+        <th>Date Submitted</th>
+    
+    </tr>
+    
+    <tr>
+        <td>Course Application</td>
+    </tr>
+    <tr>
+        <td>Instructor Application 1</td>
+    </tr>
+    <tr>
+        <td>Instructor Application 2</td>
+    </tr>
+
+
+</table>
 
 <%= link_to 'Edit', edit_instance_path(@instance) %> |
 <%= link_to 'Back', instances_path %>

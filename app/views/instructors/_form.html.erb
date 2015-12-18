@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+<select name = "user">
+    <%= options_for_select(@users.map{ |u| [u.email, u.id]}) %>
+        </select><br>
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>

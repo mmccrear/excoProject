@@ -15,6 +15,7 @@ class InstancesController < ApplicationController
   # GET /instances/new
   def new
     @instance = Instance.new
+    @courses = Course.all
   end
 
   # GET /instances/1/edit
@@ -25,6 +26,18 @@ class InstancesController < ApplicationController
   # POST /instances.json
   def create
     @instance = Instance.new(instance_params)
+    if params[:title] != ""
+        @instance.title = params[:title]
+        @course = Course.where(title: params[:title])
+        #need to set this up
+        #@course.instances << @instance
+    else
+      @course = Course.new(title: params[:new_title], active: true)
+      @course.save()
+      @instance.title = params[:new_title]
+      #@course.instances << @instance
+    end
+    
 
     respond_to do |format|
       if @instance.save
@@ -69,6 +82,6 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:year, :semester, :location, :time, :section)
+      params.require(:instance).permit(:year, :semester, :section)
     end
 end

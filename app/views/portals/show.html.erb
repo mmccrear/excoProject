@@ -12,8 +12,8 @@
     
     <% @instances.each do |i| %>
         <tr>
-            <td><% i.id %></td>
-            <td><% i.semester %> <% i.year %></td>
+            <td><%=link_to i.title, instance_path(i.id) %></td>
+            <td><%= i.semester %> <% i.year %></td>
             <td>Instructor App Status Here w/link</td>
             <td>Course Application (renewal or new course) Here w/ link</td>
         
