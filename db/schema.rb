@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215230008) do
+ActiveRecord::Schema.define(version: 20151216225827) do
 
   create_table "application_renewals", force: :cascade do |t|
     t.string   "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151215230008) do
     t.integer  "credits"
     t.integer  "capactiy"
     t.text     "problems"
-    t.text     "changes"
+    t.text     "dbowie"
     t.text     "engagement"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false

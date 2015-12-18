@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :grades
   resources :courses
   resources :application_renewals
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :users
   
 

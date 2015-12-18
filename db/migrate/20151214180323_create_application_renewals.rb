@@ -7,7 +7,7 @@ class CreateApplicationRenewals < ActiveRecord::Migration
       t.integer :credits
       t.integer :capactiy
       t.text :problems
-      t.text :changes
+      t.text :dbowie
       t.text :engagement
 
       t.timestamps null: false
