@@ -1,2 +1,24 @@
 <p id="notice"><%= notice %></p>
 <h1><%= current_user.email %></h1>
+
+<h3>Your Instances:</h3>
+<table class = "table">
+    <tr>
+        <th>Course</th>
+        <th>Semester</th>
+        <th>Instructor App</th>
+        <th>Course Application</th>
+    </tr>
+    
+    <% @instances.each do |i| %>
+        <tr>
+            <td><% i.id %></td>
+            <td><% i.semester %> <% i.year %></td>
+            <td>Instructor App Status Here w/link</td>
+            <td>Course Application (renewal or new course) Here w/ link</td>
+        
+        </tr>
+    <% end %>
+
+
+</table>

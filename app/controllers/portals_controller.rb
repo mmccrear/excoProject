@@ -6,11 +6,13 @@ class PortalsController < ApplicationController
   def index
     #@portals = Portal.all
     @user = curent_user
+    #@instances = Instances.all
   end
 
   # GET /portals/1
   # GET /portals/1.json
   def show
+    @instances = Instance.all
   end
 
   # GET /portals/new
