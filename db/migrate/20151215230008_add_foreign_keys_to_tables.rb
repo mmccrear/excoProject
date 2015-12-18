@@ -6,15 +6,15 @@ class AddForeignKeysToTables < ActiveRecord::Migration
       t.string "email"
     end
     
-    add_reference :instances, :courses, index: true, foreign_key: true
-    add_reference :instructors, :instances, index: true, foreign_key: true
-    add_reference :students, :instances, index: true, foreign_key: true
-    add_reference :grades, :instructors, index: true, foreign_key: true
-    add_reference :grades, :instances, index: true, foreign_key: true
-    add_reference :application_renewals, :instructor_apps, index: true, foreign_key: true
-    add_reference :application_renewals, :courses, index: true, foreign_key: true
-    add_reference :instructor_apps, :instructors, index: true, foreign_key: true
-    add_reference :new_courses, :instructor_app, index: true, foreign_key: true
+    add_foreign_key :instances, :courses, column: :inst_course_id 
+    add_foreign_key :instructors, :instances, column: :instruct_inst_id
+    add_foreign_key :students, :instances, column: :student_inst_id
+    add_foreign_key :grades, :instructors, column: :grade_instruct_id
+    add_foreign_key :grades, :instances, column: :grade_inst_id
+    add_foreign_key :application_renewals, :instructor_apps, column: :app_renew_instruct_app_id 
+    add_foreign_key :application_renewals, :courses, column: :app_renew_course_id
+    add_foreign_key :instructor_apps, :instructors, column: :instruct_app_instruct_id
+    add_foreign_key :new_courses, :instructor_app, column: :new_course_instruct_id
 
   end
 end
