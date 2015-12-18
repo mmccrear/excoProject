@@ -12,8 +12,6 @@ class CreateInstructorApps < ActiveRecord::Migration
       t.text :excos_taken
       t.text :exco_problems
       t.text :safe_space
-      t.integer :instructors_id
-      t.integer :new_course_id
 
       t.timestamps null: false
     end
