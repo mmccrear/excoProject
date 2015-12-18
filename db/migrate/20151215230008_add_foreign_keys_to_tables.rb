@@ -14,7 +14,7 @@ class AddForeignKeysToTables < ActiveRecord::Migration
     add_foreign_key :application_renewals, :instructor_apps, column: :app_renew_instruct_app_id 
     add_foreign_key :application_renewals, :courses, column: :app_renew_course_id
     add_foreign_key :instructor_apps, :instructors, column: :instruct_app_instruct_id
-    add_foreign_key :new_courses, :instructor_app, column: :new_course_instruct_id
+    add_foreign_key :instructor_app, :new_courses, column: :new_course_id
 
   end
 end
