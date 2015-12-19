@@ -33,6 +33,7 @@
         <td class = "text-success">Course Renewal Submitted</td>
                 <td><%= @instance.application_renewal.updated_at %></td>
             <% else %>
+                <td class = "text-danger">None</td>
                 <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
         <% else %>
@@ -40,7 +41,7 @@
         <td class = "text-success">New Course Application Submitted</td>
                 <td class = "text-success"><%= @instance.new_course.updated_at %></td>
             <% else %>
-                <td class = "text-danger">NONE</td>
+                <td class = "text-danger">None</td>
                
                 <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
