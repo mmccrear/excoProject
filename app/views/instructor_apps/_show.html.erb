@@ -43,4 +43,6 @@
   <%= instructor_app.safe_space %>
 </p>
 
+<% if current_user.admin? %>
 <%= commontator_thread(instructor_app) %>
+<% end%>

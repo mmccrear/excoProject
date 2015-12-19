@@ -55,5 +55,7 @@
     <% end %>
 </p>
 
+<% if current_user.admin? %>
 <%= commontator_thread(new_course) %>    
+<% end %>
 </div>

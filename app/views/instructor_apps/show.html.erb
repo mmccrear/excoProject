@@ -55,4 +55,6 @@
 
 <%= link_to 'Edit', edit_instructor_app_path(@instructor_app) %> |
 <%= link_to 'Back', instructor_apps_path %>
+<% if current_user.admin? %>
 <%= commontator_thread(@instructor_app) %>
+<% end %>

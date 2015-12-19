@@ -30,4 +30,6 @@
   <%= application_renewal.engagement %>
 </p>
 
+<% if current_user.admin? %>
 <%= commontator_thread(application_renewal) %>
+<% end %>

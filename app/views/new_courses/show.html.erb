@@ -73,5 +73,7 @@
 
 <%= link_to 'Edit', edit_new_course_path(@new_course) %> |
 <%= link_to 'Back', new_courses_path %>
+<% if current_user.admin? %>
 <%= commontator_thread(@new_course) %>    
+<% end %>
 </div>
