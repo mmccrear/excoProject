@@ -15,6 +15,7 @@
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
+        <% c = Course.find(instance.inst_course_id) %>
         <td><%= c.coursenum.blank? ? "XXX" : c.coursenum %></td>
         <td><%= c.title.blank? ? "UNKNOWN TITLE" : c.title %></td>
         <td><%= instance.year %></td>

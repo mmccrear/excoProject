@@ -1,3 +1,6 @@
+<div class="container">
+<h1>Instructor Application</h1>
+<br>
 <%= form_for(@instructor_app) do |f| %>
   <% if @instructor_app.errors.any? %>
     <div id="error_explanation">
@@ -12,35 +15,43 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_area :status %>
+    <label for= "status">
+    Are you a student at Oberlin College? If so, what year are you?</label><br>
+    <%= f.text_area :status, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :qualifications %><br>
-    <%= f.text_area :qualifications %>
+    <label for= "qualifications">
+    How did you acquire interest and skill in this subject area? How long have you been involved?</label><br>
+    <%= f.text_area :qualifications, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :teaching_exp %><br>
-    <%= f.text_area :teaching_exp %>
+    <label for= "teaching_exp">
+    Have you had any experience as an activity or class instructor? Please be specific concerning dates and places, and include a description of your role.</label><br>
+    <%= f.text_area :teaching_exp, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :problems %><br>
-    <%= f.text_area :problems %>
+    <label for= "problems">
+    What problems do you foresee as a course instructor?</label><br>
+    <%= f.text_area :problems, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :excos_taken %><br>
-    <%= f.text_area :excos_taken %>
+    <label for= "excos_taken">
+    Have you taken an ExCo course before? If yes, please specify which one(s) and when.</label><br>
+    <%= f.text_area :excos_taken, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :exco_problems %><br>
-    <%= f.text_area :exco_problems %>
+    <label for= "exco_problems">
+    What problems did you encounter in your roled as a student in the ExCo course(s) and what would you do as an instructor to avoid these problems?</label><br>
+    <%= f.text_area :exco_problems, :rows => 10, :cols => 80 %>
   </div>
   <div class="field">
-    <%= f.label :safe_space %><br>
-    <%= f.text_area :safe_space %>
+    <label for= "safe_space">
+    Define what you believe a safe space would look like in the context of your class.</label><br>
+    <%= f.text_area :safe_space, :rows => 10, :cols => 80 %>
   </div>
   <%= f.hidden_field :instance_id, :value=>params[:instance_id] %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
+</div>

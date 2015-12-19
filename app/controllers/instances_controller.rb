@@ -15,13 +15,7 @@ class InstancesController < ApplicationController
   # GET /instances/1
   # GET /instances/1.json
   def show
-    @instructors = @instance.instructor_apps.take(2)
-    @instructor1 = @instructors.first
-    if @instructors.first != @instructors.last
-      @instructor2 = @instructors.last
-    else
-      @instructor2 = nil
-    end
+    @instructors = InstructorApp.where(instance_id: @instance.id) || []
   end
 
   # GET /instances/new

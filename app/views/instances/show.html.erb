@@ -1,3 +1,4 @@
+
 <p>
   <h2><strong>Title:</strong>
       <%= @instance.title %></h2>
@@ -54,8 +55,8 @@
         <td class = "text-danger">None </td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
-    </tr>
-    <tr>
+        </tr>
+        <tr>
         <td>Instructor Application 2</td>
         <% if @instructor2 != nil%>
         <td class = "text-success"><%= "#{@instructor2.instructor.name} (#{@instructor2.instructor.pronouns})" %> </td>

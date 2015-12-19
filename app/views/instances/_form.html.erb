@@ -1,3 +1,5 @@
+<div class='container'>
+<h1>Application Instance</h1>
 <%= form_for(@instance) do |f| %>
   <% if @instance.errors.any? %>
     <div id="error_explanation">
@@ -41,6 +43,7 @@
   </div>
   <%= f.hidden_field :user_id, :value=>current_user.id %> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary'%>
   </div>
 <% end %>
+</div>

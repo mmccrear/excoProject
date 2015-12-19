@@ -1,5 +1,6 @@
 <div class = "container">
 <h1>New Course Application</h1>
+<br>
 <%= form_for(@new_course) do |f| %>
   <% if @new_course.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +13,6 @@
       </ul>
     </div>
   <% end %>
-    <h3>Course Details</h3>
 If there are multiple instructors for the course, only one of you can be responsible for registration and grades on PRESTO.<br>
     <label for="presto">Presto responsibility: </label><br>
     <input type = "radio" name = "presto" value = "Instructor 1" checked> Instructor 1 <br>
@@ -78,7 +78,7 @@ If there are multiple instructors for the course, only one of you can be respons
   </div>
    <%= f.hidden_field :instance_id, :value=>params[:instance_id] %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
     </div>
