@@ -41,13 +41,14 @@ class InstancesController < ApplicationController
     @instance.user_id = instance_params[:user_id]
     if params[:title] != ""
         @instance.renewal = true
+        @instance.title = params[:title]
         @course = Course.where(title: params[:title]).first
     else
       @instance.renewal = false
+      @instance.title = params[:new_title]
       @course = Course.new(title: params[:new_title], active: true)
       @course.save()
     end    
-    @instance.title = params[:new_title]
     @instance.inst_course_id = @course.id
     @instance.save()
 

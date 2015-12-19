@@ -15,7 +15,7 @@
     <% @instances.each do |i| %>
         <tr>
             <td><%=link_to i.title, instance_path(i.id) %></td>
-            <td><%= i.semester %> <% i.year %></td>
+            <td><%= "#{i.semester} #{i.year}" %> <% i.year %></td>
             <% instructor_app_id = InstructorApp.where(instance_id: i.id).first %>
             <% if instructor_app_id.blank? %>
    		<td><%= link_to "Begin Instructor App", new_instructor_app_path(instance_id: i) %></td>
