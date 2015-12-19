@@ -1,3 +1,4 @@
+<div class='container'>
 <% userInstructor = Instructor.where(user_id: current_user.id).first %>
 <h1><%= "#{userInstructor.name}'s Applications" %></h1>
 
@@ -44,3 +45,4 @@
 </table>
 <% end %>
 <%= link_to('Start New Application', new_instance_path, {class: "btn btn-primary"}) %>
+</div>

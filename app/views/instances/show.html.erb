@@ -42,21 +42,22 @@
     </tr>
     <tr>
         <td>Instructor Application 1</td>
-        <% if @instructor1 != nil %>
-            <td><%= link_to @instructor1.instructor.name, edit_instructor_app_path(@instructor1)%></td>
-            <td class = "text-success"><%= @instructor1.updated_at %></td>
+        <% if @instructors.length > 0 %>
+            <% instruct1 = Instructor.find(@instructors.first).name %>
+            <td><%= link_to "#{instruct1}'s Application", edit_instructor_app_path(@instructors.first)%></td>
+            <td class = "text-success"><%= @instructors.first.updated_at %></td>
         <% else %>
-        <td><%= link_to 'None - Create New Intructor Application', new_instructor_app_path %></td>
+            <td><%= link_to 'Create New Intructor Application', new_instructor_app_path %></td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
-    </tr>
-    <tr>
+        </tr>
+        <tr>
         <td>Instructor Application 2</td>
-        <% if @instructor2 != nil%>
-            <td><%= link_to @instructor2.instructor.name, edit_instructor_app_path(@instructor2)%></td>
-            <td class = "text-success"><%= @instructor2.updated_at %></td>
+        <% if @instructors.length > 1 %>
+            <% instruct2 = Instructor.find(@instructors[1]).name  %>
+            <td><%= link_to "#{instruct2}'s Application", edit_instructor_app_path(@instructors.first)%></td>
         <% else %>
-        <td><%= link_to 'None - Create New Intructor Application', new_instructor_app_path %></td>
+            <td><%= link_to 'Create New Intructor Application', new_instructor_app_path %></td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>

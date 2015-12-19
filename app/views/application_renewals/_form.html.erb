@@ -1,5 +1,6 @@
 <div class = "container">
-<h1>Course Renewal Application </h1>
+<h1>Course Renewal Application</h1>
+<br>
 <%= form_for(@application_renewal) do |f| %>
   <% if @application_renewal.errors.any? %>
     <div id="error_explanation">
@@ -14,8 +15,6 @@
   <% end %>
 
 
-  <div class = "form-group row">
-      <h3>Course Details</h3>
 
   <div class="field">
     <label for="credits">
@@ -49,6 +48,5 @@
   <div class="actions">
     <%= f.submit class: 'btn btn-primary' %>
   </div>
-</div>
 <% end %>
 </div>
