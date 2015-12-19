@@ -1,4 +1,4 @@
-  <li id="title_link"><%= link_to 'Exco', root_path %></li>
+<li id="title_link"><%= link_to 'Exco', root_path %></li>
 <% if user_signed_in? %>
   <% userInstructor = Instructor.where(user_id: current_user.id).first %>
   <% if(userInstructor.blank?) %>
@@ -7,7 +7,9 @@
   <li><%= link_to "Account (#{userInstructor.name})", portal_path(current_user.id) %></li>
   <% end %>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-
+  <% if current_user.admin? %>
+    <li><%= link_to "Courses", instances_path %></li>
+  <% end %>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>

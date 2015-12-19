@@ -44,11 +44,6 @@ class NewCoursesController < ApplicationController
     @new_course.name = params[:name]
     #only saving 1 instructor right now... not sure where/how to save a second instructor.
     #@instructor_app1 = InstructorApp.find(params[:instructor1])
-    @instance = Instance.where(title: params[:name]).take
-    @instance.new_course= @new_course
-    @instance.save()
-    
-    
 
     respond_to do |format|
       if @new_course.save

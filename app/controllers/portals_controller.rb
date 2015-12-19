@@ -1,6 +1,8 @@
 class PortalsController < ApplicationController
   before_action :set_portal, :authenticate_user, only: [:edit, :update, :destroy]
-
+  before_action :only=>:show do
+    redirect_to new_instructor_path if Instructor.where(user_id: current_user.id).first.nil?
+  end
   # GET /portals
   # GET /portals.json
   def index
