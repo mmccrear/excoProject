@@ -11,13 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219020110) do
+ActiveRecord::Schema.define(version: 20151219180657) do
 
   create_table "application_renewals", force: :cascade do |t|
-    t.string   "name"
-    t.string   "semester"
-    t.integer  "year"
-    t.integer  "credits"
     t.integer  "capactiy"
     t.text     "problems"
     t.text     "dbowie"
@@ -112,10 +108,6 @@ ActiveRecord::Schema.define(version: 20151219020110) do
   end
 
   create_table "instructor_apps", force: :cascade do |t|
-    t.string   "course"
-    t.integer  "year"
-    t.string   "semester"
-    t.string   "tnumber"
     t.text     "status"
     t.text     "qualifications"
     t.text     "teaching_exp"
@@ -145,9 +137,6 @@ ActiveRecord::Schema.define(version: 20151219020110) do
   end
 
   create_table "new_courses", force: :cascade do |t|
-    t.string   "name"
-    t.string   "semester"
-    t.integer  "year"
     t.string   "divison"
     t.text     "description"
     t.text     "why_exco"
