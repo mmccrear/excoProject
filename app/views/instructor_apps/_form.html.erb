@@ -11,9 +11,16 @@
     </div>
   <% end %>
 
+    <label for ="instructor">Instructor Name:</label>
+    <select name = "instructor">
+        <%= options_for_select(@instructors.map{ |i| [i.name, i.id]}) %>
+        </select><br>
+
   <div class="field">
     <%= f.label :course %><br>
-    <%= f.text_field :course %>
+    <select name = "course">
+        <%= options_for_select(@instances.map{ |i| [i.title, i.title]}) %>
+        </select><br>
   </div>
   <div class="field">
     <%= f.label :year %><br>

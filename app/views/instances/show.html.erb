@@ -42,7 +42,7 @@
         <% if @instance.renewal %>
             <% if @instance.application_renewal %>
                 <td><%= link_to 'Go To Renewal', edit_application_renewal_path(@instance.application_renewal) %></td>
-                <td><% @instance.application_renewal.updated_at %></td>
+                <td><%= @instance.application_renewal.updated_at %></td>
             <% else %>
                 <td><%= link_to 'Create New Application Renewal', new_application_renewal_path %></td>
                 <td>NOT SUBMITTED</td>
@@ -50,7 +50,7 @@
         <% else %>
             <% if @instance.new_course %>
                 <td><%= link_to 'Go To Application', edit_new_course_path(@instance.new_course) %></td>
-                <td><% @instance.new_course.updated_at %></td>
+                <td><%= @instance.new_course.updated_at %></td>
             <% else %>
                 <td><%= link_to 'Create New Course Application', new_new_course_path %> </td>
                 <td>NOT SUBMITTED</td>
@@ -59,13 +59,23 @@
     </tr>
     <tr>
         <td>Instructor Application 1</td>
+        <% if @instructor1 != nil %>
+            <td><%= link_to @instructor1.instructor.name, edit_instructor_app_path(@instructor1)%></td>
+            <td><%= @instructor1.updated_at %></td>
+        <% else %>
             <td><%= link_to 'New Intructor Application', new_instructor_app_path %></td>
             <td>NOT SUBMITTED</td>
+        <% end %>
     </tr>
     <tr>
         <td>Instructor Application 2</td>
+        <% if @instructor2 != nil%>
+            <td><%= link_to @instructor2.instructor.name, edit_instructor_app_path(@instructor2)%></td>
+            <td><%= @instructor2.updated_at %></td>
+        <% else %>
             <td><%= link_to 'New Intructor Application', new_instructor_app_path %></td>
             <td>NOT SUBMITTED</td>
+        <% end %>
     </tr>
 
 
@@ -73,3 +83,4 @@
 
 <%= link_to 'Edit', edit_instance_path(@instance) %> |
 <%= link_to 'Back', instances_path %>
+

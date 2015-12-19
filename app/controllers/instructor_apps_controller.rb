@@ -15,17 +15,29 @@ class InstructorAppsController < ApplicationController
   # GET /instructor_apps/new
   def new
     @instructor_app = InstructorApp.new
+    @instructors = Instructor.all    #filter by users
+    @instances = Instance.all        #filter by users
   end
 
   # GET /instructor_apps/1/edit
   def edit
+    @instructors = Instructor.all    #filter by users
+    @instances = Instance.all        #filter by users
   end
 
   # POST /instructor_apps
   # POST /instructor_apps.json
   def create
     @instructor_app = InstructorApp.new(instructor_app_params)
+    @instructor_app.course = params[:course]
+    @instance = Instance.where(title: params[:course]).take
+    @instance.instructor_apps << @instructor_app
+    @instance.save()
 
+    @instructor = Instructor.find(params[:instructor])
+    @instructor.instructor_apps << @instructor_app
+    @instructor.save()
+    @instructor_app.instance = @instance
     respond_to do |format|
       if @instructor_app.save
         format.html { redirect_to @instructor_app, notice: 'Instructor app was successfully created.' }
