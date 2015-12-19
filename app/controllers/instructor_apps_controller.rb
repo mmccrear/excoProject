@@ -30,6 +30,7 @@ class InstructorAppsController < ApplicationController
   # POST /instructor_apps.json
   def create
     @instructor_app = InstructorApp.new(instructor_app_params)
+    @instructor_app.instructor = current_user.instructor
     @instructor_app.course = params[:course]
     respond_to do |format|
       if @instructor_app.save

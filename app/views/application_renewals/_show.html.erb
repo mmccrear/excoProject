@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+    <%= application_renewal.instance.title %>
+</p>
+
+<p>
+  <strong>Credits: </strong>
+  <%= application_renewal.credits %>
+</p>
+
+<p>
+  <strong>Capacity: </strong>
+  <%= application_renewal.capactiy %>
+</p>
+
+<p>
+  <strong>What were the major problems with this class the last time it was offered? How will you try to solve them for next semester?</strong><br>
+  <%= application_renewal.problems %>
+</p>
+
+<p>
+  <strong>What changes are you making to the course, if any?</strong><br>
+  <%= application_renewal.dbowie %>
+</p>
+
+<p>
+  <strong>How do you think that the students felt about this course the last time it was taught? Were the students engaged in the course? Do you think that all students felt comfortable with the course material?</strong><br>
+  <%= application_renewal.engagement %>
+</p>
+
+<%= commontator_thread(application_renewal) %>

@@ -1,0 +1,55 @@
+<div class = "container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course Title:</strong>
+    <%= new_course.instance.name %>
+</p>
+
+<p>
+  <strong>Division:</strong>
+  <%= new_course.divison %>
+</p>
+
+<p>
+  <strong>Describe your course:</strong>
+  <%= new_course.description %>
+</p>
+
+<p>
+  <strong>Why should this class be an ExCo?</strong>
+  <%= new_course.why_exco %>
+</p>
+
+<p>
+  <strong>How will you formally evaluate your students accomplishments?</strong>
+  <%= new_course.evaluations %>
+</p>
+
+<p>
+  <strong>Credits:</strong>
+  <%= new_course.credits %>
+</p>
+
+<p>
+  <strong>How many hours per week do you plan to meet?</strong>
+  <%= new_course.hours_meet %>
+</p>
+
+<p>
+  <strong>How many hours per week of outside work will you expect from your students?</strong>
+  <%= new_course.hours_outside %>
+</p>
+
+<p>
+  <strong>Capactiy:</strong>
+  <%= new_course.capactiy %>
+</p>
+
+<p>
+  <strong>Chairperson who's signature is needed:</strong>
+  <%= new_course.signature %>
+</p>
+
+<%= commontator_thread(new_course) %>    
+</div>

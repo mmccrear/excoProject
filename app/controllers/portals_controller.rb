@@ -6,9 +6,7 @@ class PortalsController < ApplicationController
   # GET /portals
   # GET /portals.json
   def index
-    #@portals = Portal.all
     @user = curent_user
-    #@instances = Instances.all
   end
 
   # GET /portals/1

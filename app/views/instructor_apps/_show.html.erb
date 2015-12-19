@@ -1,0 +1,41 @@
+<p>
+  <strong>T Number:</strong>
+  <%= instructor_app.instructor.tnumber %>
+</p>
+
+<p>
+  <strong>Are you a student at Oberlin College? If so, what year are you?</strong><br>
+  <%= instructor_app.status %>
+</p>
+
+<p>
+  <strong>How did you acquire interest and skill in this subject area? HOw long have you been involved?</strong><br>
+  <%= instructor_app.qualifications %>
+</p>
+
+<p>
+  <strong>Have you had any experience as an activity or class instructor? Please be specific concerning dates and places, and include a description of your role.</strong><br>
+  <%= instructor_app.teaching_exp %>
+</p>
+
+<p>
+  <strong>What problems do you foresee as a course instructor?</strong><br>
+  <%= instructor_app.problems %>
+</p>
+
+<p>
+  <strong>Have you taken an ExCo course before? If yes, please specify which one(s) and when.</strong><br>
+  <%= instructor_app.excos_taken %>
+</p>
+
+<p>
+  <strong>What problems did you encounter in your role as a student in the ExCo course(s) and what would you do as an instructor to avoid these problems?</strong><br>
+  <%= instructor_app.exco_problems %>
+</p>
+
+<p>
+  <strong>Define what you believe a safe space would look like in the context of your class.</strong><br>
+  <%= instructor_app.safe_space %>
+</p>
+
+<%= commontator_thread(instructor_app) %>

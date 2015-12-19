@@ -4,9 +4,15 @@
 </p>
 <p>
   <h4><strong>Semester:</strong>
-      <%= @instance.year %> <%= @instance.semester %></h4>
+      <%= @instance.semester %> <%= @instance.year %> </h4>
 </p>
-
+<p>
+    <% if @instance.renewal %>
+        This course is a renewal.
+    <% else %>
+        This is a new course.
+    <% end %>
+</p>
 
 
 
@@ -15,7 +21,6 @@
     <tr>
         <th>Component</th>
         <th>Status</th>
-        <th></th>
         <th>Date Submitted</th>
     
     </tr>
@@ -24,19 +29,18 @@
         <td>Course Application</td>
         <% if @instance.renewal %>
             <% if @instance.application_renewal %>
-        <td class = "text-success">Course Renewal Submitted</td><td><td><%= link_to 'Edit', edit_application_renewal_path(@instance.application_renewal) %></td>
+        <td class = "text-success">Course Renewal Submitted</td>
                 <td><%= @instance.application_renewal.updated_at %></td>
             <% else %>
-                <td><%= link_to 'Create New Application Renewal', new_application_renewal_path %></td>
                 <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
         <% else %>
             <% if @instance.new_course %>
-        <td class = "text-success">New Course Application Submitted</td><td> <%= link_to 'Edit', edit_new_course_path(@instance.new_course), :class => "btn btn-primary" %></td>
+        <td class = "text-success">New Course Application Submitted</td>
                 <td class = "text-success"><%= @instance.new_course.updated_at %></td>
             <% else %>
                 <td class = "text-danger">NONE</td>
-                <td><%= link_to 'Create New Course Application', new_new_course_path %> </td>
+               
                 <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
         <% end %>
@@ -44,28 +48,113 @@
     <tr>
         <td>Instructor Application 1</td>
         <% if @instructor1 != nil %>
-        <td class = "text-success"><%= "#{@instructor1.instructor.name} (#{@instructor1.instructor.pronouns})" %> </td><td><%= link_to "Edit", edit_instructor_app_path(@instructor1), :class => "btn btn-primary" %></td>
+        <td class = "text-success"><%= "#{@instructor1.instructor.name} (#{@instructor1.instructor.pronouns})" %> </td>
             <td class = "text-success"><%= @instructor1.updated_at %></td>
         <% else %>
-        <td class = "text-danger">None </td><td><%= link_to 'Create New', new_instructor_app_path, :class => "btn btn-warning" %></td>
+        <td class = "text-danger">None </td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>
     <tr>
         <td>Instructor Application 2</td>
         <% if @instructor2 != nil%>
-        <td class = "text-success"><%= "#{@instructor2.instructor.name} (#{@instructor2.instructor.pronouns})" %> </td><td><%= link_to "Edit", edit_instructor_app_path(@instructor2), :class => "btn btn-primary" %></td>
+        <td class = "text-success"><%= "#{@instructor2.instructor.name} (#{@instructor2.instructor.pronouns})" %> </td>
             <td class = "text-success"><%= @instructor2.updated_at %></td>
         <% else %>
-        <td class = "text-danger">None </td><td><%= link_to 'Create New', new_instructor_app_path, :class => "btn btn-warning" %></td>
+        <td class = "text-danger">None </td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>
 
 </table>
+<hr>
+
+<h3>Course Application</h3>
+<% if @instance.application_renewal != nil %>
+    <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" href="#renewal">Click to Show Course Renewal</a>
+      </h4>
+    <div id="renewal" class="panel-collapse collapse">
+        <div class = "panel-body">
+            <%= render :partial => "application_renewals/show.html.erb", locals: {:application_renewal => @instance.application_renewal} %>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<% elsif @instance.new_course != nil %>
+        <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" href="#new_course">Click to Show New Course Application</a>
+      </h4>
+    <div id="new_course" class="panel-collapse collapse">
+        <div class = "panel-body">
+            <%= render :partial => "new_courses/show.html.erb", locals: {:new_course => @instance.new_course} %>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<% else %>
+    <strong class = "text-danger">Not Submitted</strong><br>
+<% end %>
+
+
 
 
 <hr>
+<h3>Instructor 1</h3>
+<% if @instructor1 != nil %>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" href="#instructor1">Click to Show <%= @instructor1.instructor.name %>'s Application</a>
+      </h4>
+    <div id="instructor1" class="panel-collapse collapse">
+        <div class = "panel-body">
+<%= render :partial => "instructor_apps/show.html.erb", locals: {:instructor_app => @instructor1} %>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<% else %>
+    <strong class = "text-danger">Not Submitted</strong><br>
+<% end %>
+
+<hr>
+
+<h3>Instructor 2</h3>
+<% if @instructor2 != nil %>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" href="#instructor2">Click to Show <%= @instructor2.instructor.name %>'s Application</a>
+      </h4>
+    <div id="instructor2" class="panel-collapse collapse">
+        <div class = "panel-body">
+<%= render :partial => "instructor_apps/show.html.erb", locals: {:instructor_app => @instructor2} %>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<% else %>
+    <strong class = "text-danger">Not Submitted</strong><br>
+<% end %>
+
+<hr>
+
+
+
 <p>
   <strong>Location:</strong>
   <%= @instance.location %>
