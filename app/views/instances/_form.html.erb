@@ -18,11 +18,17 @@
         </select><br>
       New Course Title: <input type = "text" name = "new_title">
 
-</div>
+  </div>
+  <% curYear = Time.now.year %>
+  <% years = Array.new()%>
+  <% for i in -2..3 %>
+    <% years<<[curYear+i,curYear+i] %>
+  <% end %>
 
-  <div class="field">
+
+  <div class="dropdown field">
     <%= f.label :year %><br>
-    <%= f.number_field :year %>
+    <%= f.select :year, options_for_select(years, curYear), {class: "dropdown-menu form-control"} %>
   </div>
   <div class="field">
     <%= f.label :semester %><br>
@@ -31,8 +37,9 @@
   </div>
   <div class="field">
     <label for = "section">Section (should be 1 unless there are multiple sections of your course)</label><br>
-    <%= f.number_field :section %>
+    <%= f.number_field :section, :value=>'1' %>
   </div>
+  <%= f.hidden_field :user_id, :value=>current_user.id %> 
   <div class="actions">
     <%= f.submit %>
   </div>

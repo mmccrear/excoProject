@@ -15,7 +15,6 @@ class ApplicationRenewalsController < ApplicationController
   # GET /application_renewals/new
   def new
     @application_renewal = ApplicationRenewal.new
-    @instances = Instance.all     #eventually filter by users
   end
 
   # GET /application_renewals/1/edit
@@ -26,10 +25,13 @@ class ApplicationRenewalsController < ApplicationController
   # POST /application_renewals.json
   def create
     @application_renewal = ApplicationRenewal.new(application_renewal_params)
+    
+    @application_renewal.instance_id = params[:application_renewal][:instance_id]
+    @application_renewal.save()
 
     respond_to do |format|
       if @application_renewal.save
-        format.html { redirect_to @application_renewal, notice: 'Application renewal was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Application renewal was successfully created.' }
         format.json { render :show, status: :created, location: @application_renewal }
       else
         format.html { render :new }
@@ -70,6 +72,6 @@ class ApplicationRenewalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def application_renewal_params
-      params.require(:application_renewal).permit(:name, :semester, :year, :credits, :capactiy, :problems, :dbowie, :engagement)
+      params.require(:application_renewal).permit(:name, :semester, :year, :credits, :capactiy, :problems, :dbowie, :engagement, :instance_id)
     end
 end

@@ -1,7 +1,9 @@
-<p id="notice"><%= notice %></p>
-<h1><%= current_user.email %></h1>
+<% userInstructor = Instructor.where(user_id: current_user.id).first %>
+<h1><%= "#{userInstructor.name}'s Applications" %></h1>
 
-<h3>Your Instances:</h3>
+<% if @instances.empty? %>
+<p>You have no courses!</p>
+<% else %>
 <table class = "table">
     <tr>
         <th>Course</th>
@@ -14,11 +16,31 @@
         <tr>
             <td><%=link_to i.title, instance_path(i.id) %></td>
             <td><%= i.semester %> <% i.year %></td>
-            <td>Instructor App Status Here w/link</td>
-            <td>Course Application (renewal or new course) Here w/ link</td>
-        
+            <% instructor_app_id = InstructorApp.where(instance_id: i.id).first %>
+            <% if instructor_app_id.blank? %>
+   		<td><%= link_to "Begin Instructor App", new_instructor_app_path(instance: i) %></td>
+            <% else %>
+	        <td><%=link_to "Edit Instructor App", edit_instructor_app_path(instructor_app_id) %></td>
+            <% end %>
+            <%if i.renewal? %>
+            	<% course_app_id = ApplicationRenewal.where(instance_id: i.id).first %> 
+   		<% if course_app_id.blank? %>
+                  <td><%= link_to "Begin Course Renewal App", new_application_renewal_path(instance: i) %></td>
+                <% else %>
+                  <td><%= link_to "Edit Course Renewal App", edit_application_renewal_path(course_app_id.id) %></td>
+                <% end %>
+            <% else %>
+            	<% course_app_id = NewCourse.where(instance_id: i.id).first %> 
+   		<% if course_app_id.blank? %>
+                  <td><%= link_to "Begin New Course App", new_new_course_path(instance: i) %></td>
+                <% else %>
+                  <td><%= link_to "Edit New Course App", edit_new_course_path(course_app_id.id) %></td>
+	        <% end %>
+            <% end %>        
         </tr>
     <% end %>
 
 
 </table>
+<% end %>
+<%= link_to('Start New Application', new_instance_path, {class: "btn btn-primary"}) %>

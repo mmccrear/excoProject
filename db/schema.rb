@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218190555) do
+ActiveRecord::Schema.define(version: 20151219020110) do
 
   create_table "application_renewals", force: :cascade do |t|
     t.string   "name"
@@ -22,14 +22,12 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.text     "problems"
     t.text     "dbowie"
     t.text     "engagement"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "instructor_apps_id"
-    t.integer  "courses_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "app_renew_instruct_app_id"
+    t.integer  "app_renew_course_id"
+    t.integer  "instance_id"
   end
-
-  add_index "application_renewals", ["courses_id"], name: "index_application_renewals_on_courses_id"
-  add_index "application_renewals", ["instructor_apps_id"], name: "index_application_renewals_on_instructor_apps_id"
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
@@ -83,21 +81,18 @@ ActiveRecord::Schema.define(version: 20151218190555) do
   end
 
   create_table "grades", force: :cascade do |t|
-    t.boolean  "orientation",    default: false
-    t.boolean  "exco_fair",      default: false
-    t.boolean  "agreement",      default: false
+    t.boolean  "orientation",       default: false
+    t.boolean  "exco_fair",         default: false
+    t.boolean  "agreement",         default: false
     t.float    "midterm_eval"
     t.float    "auditing"
     t.float    "final_eval"
     t.float    "final_paper"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "instructors_id"
-    t.integer  "instances_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "grade_instruct_id"
+    t.integer  "grade_inst_id"
   end
-
-  add_index "grades", ["instances_id"], name: "index_grades_on_instances_id"
-  add_index "grades", ["instructors_id"], name: "index_grades_on_instructors_id"
 
   create_table "instances", force: :cascade do |t|
     t.integer  "year"
@@ -105,15 +100,16 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.string   "location"
     t.string   "time"
     t.integer  "section"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "courses_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "inst_course_id"
     t.string   "title"
     t.boolean  "renewal"
     t.text     "status"
+    t.integer  "new_course_id"
+    t.integer  "renewal_id"
+    t.integer  "user_id"
   end
-
-  add_index "instances", ["courses_id"], name: "index_instances_on_courses_id"
 
   create_table "instructor_apps", force: :cascade do |t|
     t.string   "course"
@@ -127,12 +123,13 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.text     "excos_taken"
     t.text     "exco_problems"
     t.text     "safe_space"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "instructors_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "instruct_app_instruct_id"
+    t.integer  "new_course_id"
+    t.integer  "instructor_id"
+    t.integer  "instance_id"
   end
-
-  add_index "instructor_apps", ["instructors_id"], name: "index_instructor_apps_on_instructors_id"
 
   create_table "instructors", force: :cascade do |t|
     t.string   "email"
@@ -141,12 +138,11 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.string   "pronouns"
     t.string   "address"
     t.string   "phone"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "instances_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "instruct_inst_id"
+    t.integer  "user_id"
   end
-
-  add_index "instructors", ["instances_id"], name: "index_instructors_on_instances_id"
 
   create_table "new_courses", force: :cascade do |t|
     t.string   "name"
@@ -161,20 +157,16 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.integer  "hours_outside"
     t.integer  "capactiy"
     t.string   "signature"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "instructor_app_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "instance_id"
   end
-
-  add_index "new_courses", ["instructor_app_id"], name: "index_new_courses_on_instructor_app_id"
 
   create_table "students", force: :cascade do |t|
     t.string  "name"
     t.string  "email"
-    t.integer "instances_id"
+    t.integer "student_inst_id"
   end
-
-  add_index "students", ["instances_id"], name: "index_students_on_instances_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
