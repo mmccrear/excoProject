@@ -32,7 +32,7 @@ class InstructorAppsController < ApplicationController
     @instructor_app.course = params[:course]
     respond_to do |format|
       if @instructor_app.save
-        format.html { redirect_to @instructor_app, notice: 'Instructor app was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instructor app was successfully created.' }
         format.json { render :show, status: :created, location: @instructor_app }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class InstructorAppsController < ApplicationController
   def update
     respond_to do |format|
       if @instructor_app.update(instructor_app_params)
-        format.html { redirect_to @instructor_app, notice: 'Instructor app was successfully updated.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instructor app was successfully updated.' }
         format.json { render :show, status: :ok, location: @instructor_app }
       else
         format.html { render :edit }

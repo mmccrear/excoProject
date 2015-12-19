@@ -45,7 +45,7 @@ class ApplicationRenewalsController < ApplicationController
   def update
     respond_to do |format|
       if @application_renewal.update(application_renewal_params)
-        format.html { redirect_to @application_renewal, notice: 'Application renewal was successfully updated.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Application renewal was successfully updated.' }
         format.json { render :show, status: :ok, location: @application_renewal }
       else
         format.html { render :edit }
