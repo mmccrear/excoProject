@@ -1,5 +1,6 @@
 class InstancesController < ApplicationController
-  before_action [:set_instance, :authenticate_user!], only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_instance, only: [:show, :edit, :update, :destroy]
   before_action :only=>:index do
     redirect_to new_user_session_path unless current_user
     redirect_to portal_path(current_user.id) unless current_user.admin?
