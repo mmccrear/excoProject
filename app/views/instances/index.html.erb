@@ -1,4 +1,4 @@
-<h1>Listing Instances</h1>
+<h1>All Applications</h1>
 
 <table class="table">
   <thead>
@@ -15,15 +15,13 @@
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
-        <%= c = Course.find(instance.inst_course_id) %>
-        <td><%= c.coursenum %></td>
-        <td><%= c.title %></td>
+        <td><%= c.coursenum.blank? ? "XXX" : c.coursenum %></td>
+        <td><%= c.title.blank? ? "UNKNOWN TITLE" : c.title %></td>
         <td><%= instance.year %></td>
         <td><%= instance.semester %></td>
         <td><%= instance.section %></td>
         <td><%= link_to 'Show', instance %></td>
-        <td><%= link_to 'Edit', edit_instance_path(instance) %></td>
-        <td><%= link_to 'Destroy', instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +29,3 @@
 
 <br>
 
-<%= link_to 'New Instance', new_instance_path %>
