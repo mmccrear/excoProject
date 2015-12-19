@@ -15,7 +15,7 @@
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
-        <%= c = Course.find(instance.inst_course_id).first %>
+        <%= c = Course.find(instance.inst_course_id) %>
         <td><%= c.coursenum %></td>
         <td><%= c.title %></td>
         <td><%= instance.year %></td>

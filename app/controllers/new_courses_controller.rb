@@ -45,15 +45,10 @@ class NewCoursesController < ApplicationController
     @new_course.name = params[:name]
     #only saving 1 instructor right now... not sure where/how to save a second instructor.
     #@instructor_app1 = InstructorApp.find(params[:instructor1])
-    @instance = Instance.where(title: params[:name]).take
-    @instance.new_course= @new_course
-    @instance.save()
-    
-    
 
     respond_to do |format|
       if @new_course.save
-        format.html { redirect_to @new_course, notice: 'New course was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'New course was successfully created.' }
         format.json { render :show, status: :created, location: @new_course }
       else
         format.html { render :new }
@@ -67,7 +62,7 @@ class NewCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @new_course.update(new_course_params)
-        format.html { redirect_to @new_course, notice: 'New course was successfully updated.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'New course was successfully updated.' }
         format.json { render :show, status: :ok, location: @new_course }
       else
         format.html { render :edit }

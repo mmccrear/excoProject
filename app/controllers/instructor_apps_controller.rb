@@ -31,17 +31,9 @@ class InstructorAppsController < ApplicationController
   def create
     @instructor_app = InstructorApp.new(instructor_app_params)
     @instructor_app.course = params[:course]
-    @instance = Instance.where(title: params[:course]).take
-    @instance.instructor_apps << @instructor_app
-    @instance.save()
-
-    @instructor = Instructor.find(params[:instructor])
-    @instructor.instructor_apps << @instructor_app
-    @instructor.save()
-    @instructor_app.instance = @instance
     respond_to do |format|
       if @instructor_app.save
-        format.html { redirect_to @instructor_app, notice: 'Instructor app was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instructor app was successfully created.' }
         format.json { render :show, status: :created, location: @instructor_app }
       else
         format.html { render :new }
@@ -55,7 +47,7 @@ class InstructorAppsController < ApplicationController
   def update
     respond_to do |format|
       if @instructor_app.update(instructor_app_params)
-        format.html { redirect_to @instructor_app, notice: 'Instructor app was successfully updated.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instructor app was successfully updated.' }
         format.json { render :show, status: :ok, location: @instructor_app }
       else
         format.html { render :edit }
@@ -82,6 +74,6 @@ class InstructorAppsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instructor_app_params
-      params.require(:instructor_app).permit(:course, :year, :semester, :tnumber, :status, :qualifications, :teaching_exp, :problems, :excos_taken, :exco_problems, :safe_space)
+      params.require(:instructor_app).permit(:course, :year, :semester, :tnumber, :status, :qualifications, :teaching_exp, :problems, :excos_taken, :exco_problems, :safe_space, :instance_id)
     end
 end
