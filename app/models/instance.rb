@@ -4,4 +4,7 @@ class Instance < ActiveRecord::Base
   has_many :instructor_apps
   has_many :instructors, :through => :instructor_app
   belongs_to :course
+
+  acts_as_commontable  
+
 end
