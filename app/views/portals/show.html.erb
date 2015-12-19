@@ -22,21 +22,21 @@
             <% if instructor_app_id.blank? %>
    		<td><%= link_to "Begin Instructor App", new_instructor_app_path(instance_id: i) %></td>
             <% else %>
-	        <td><%=link_to "Edit Instructor App", edit_instructor_app_path(instructor_app_id) %></td>
+	        <td><%=link_to "Edit Instructor App", edit_instructor_app_path(instructor_app_id, instance_id: i) %></td>
             <% end %>
             <%if i.renewal? %>
             	<% course_app_id = ApplicationRenewal.where(instance_id: i.id).first %> 
    		<% if course_app_id.blank? %>
                   <td><%= link_to "Begin Course Renewal App", new_application_renewal_path(instance_id: i) %></td>
                 <% else %>
-                  <td><%= link_to "Edit Course Renewal App", edit_application_renewal_path(course_app_id.id) %></td>
+                  <td><%= link_to "Edit Course Renewal App", edit_application_renewal_path(course_app_id.id, instance_id: i) %></td>
                 <% end %>
             <% else %>
             	<% course_app_id = NewCourse.where(instance_id: i.id).first %> 
    		<% if course_app_id.blank? %>
                   <td><%= link_to "Begin New Course App", new_new_course_path(instance_id: i) %></td>
                 <% else %>
-                  <td><%= link_to "Edit New Course App", edit_new_course_path(course_app_id.id) %></td>
+                  <td><%= link_to "Edit New Course App", edit_new_course_path(course_app_id.id, instance_id: i) %></td>
 	        <% end %>
             <% end %>        
         </tr>

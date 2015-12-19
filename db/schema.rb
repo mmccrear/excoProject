@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219182432) do
+ActiveRecord::Schema.define(version: 20151219184302) do
 
   create_table "application_renewals", force: :cascade do |t|
     t.integer  "capactiy"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20151219182432) do
     t.integer  "app_renew_instruct_app_id"
     t.integer  "app_renew_course_id"
     t.integer  "instance_id"
+    t.integer  "credits"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
