@@ -14,8 +14,20 @@
         <tr>
             <td><%=link_to i.title, instance_path(i.id) %></td>
             <td><%= i.semester %> <% i.year %></td>
-            <td>Instructor App Status Here w/link</td>
-            <td>Course Application (renewal or new course) Here w/ link</td>
+            <% if i.instructor_apps.length != 0 %>
+                <td class = "text-success">
+            <% else %>
+                <td class = "text-success">
+            <% end %>
+            <%= i.instructor_apps.length %> Instructor Apps Submitted
+            </td>
+            <% if i.application_renewal != nil %>
+                <td class = "text-success">Course Renewal Submitted</td>
+            <% elsif i.new_course%>
+                <td class = "text-success">New Course Application Submitted</td>
+            <% else %>
+                <td class = "text-danger">No Course Application</td>
+            <% end %>
         
         </tr>
     <% end %>

@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Title:</strong>
-    <%= @instance.title %>
+  <h2><strong>Title:</strong>
+      <%= @instance.title %></h2>
 </p>
 <p>
-  <strong>Year:</strong>
-  <%= @instance.year %>
+  <h4><strong>Semester:</strong>
+      <%= @instance.year %> <%= @instance.semester %></h4>
 </p>
 
-<p>
-  <strong>Semester:</strong>
-  <%= @instance.semester %>
-</p>
 
 
 
@@ -19,7 +15,8 @@
 <table class = "table">
     <tr>
         <th>Component</th>
-        <th>Status (click to edit)</th>
+        <th>Status</th>
+        <th></th>
         <th>Date Submitted</th>
     
     </tr>
@@ -28,17 +25,18 @@
         <td>Course Application</td>
         <% if @instance.renewal %>
             <% if @instance.application_renewal %>
-        <td><%= link_to 'Completed', edit_application_renewal_path(@instance.application_renewal) %></td>
+        <td class = "text-success">Course Renewal Submitted</td><td><td><%= link_to 'Edit', edit_application_renewal_path(@instance.application_renewal) %></td>
                 <td><%= @instance.application_renewal.updated_at %></td>
             <% else %>
                 <td><%= link_to 'Create New Application Renewal', new_application_renewal_path %></td>
-                <td>NOT SUBMITTED</td>
+                <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
         <% else %>
             <% if @instance.new_course %>
-        <td><%= link_to 'Completed', edit_new_course_path(@instance.new_course) %></td>
+        <td class = "text-success">New Course Application Submitted</td><td> <%= link_to 'Edit', edit_new_course_path(@instance.new_course), :class => "btn btn-primary" %></td>
                 <td class = "text-success"><%= @instance.new_course.updated_at %></td>
             <% else %>
+                <td class = "text-danger">NONE</td>
                 <td><%= link_to 'Create New Course Application', new_new_course_path %> </td>
                 <td class = "text-danger">NOT SUBMITTED</td>
             <% end %>
@@ -47,20 +45,20 @@
     <tr>
         <td>Instructor Application 1</td>
         <% if @instructor1 != nil %>
-            <td><%= link_to @instructor1.instructor.name, edit_instructor_app_path(@instructor1)%></td>
+        <td class = "text-success"><%= "#{@instructor1.instructor.name} (#{@instructor1.instructor.pronouns})" %> </td><td><%= link_to "Edit", edit_instructor_app_path(@instructor1), :class => "btn btn-primary" %></td>
             <td class = "text-success"><%= @instructor1.updated_at %></td>
         <% else %>
-        <td><%= link_to 'None - Create New Intructor Application', new_instructor_app_path %></td>
+        <td class = "text-danger">None </td><td><%= link_to 'Create New', new_instructor_app_path, :class => "btn btn-warning" %></td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>
     <tr>
         <td>Instructor Application 2</td>
         <% if @instructor2 != nil%>
-            <td><%= link_to @instructor2.instructor.name, edit_instructor_app_path(@instructor2)%></td>
+        <td class = "text-success"><%= "#{@instructor2.instructor.name} (#{@instructor2.instructor.pronouns})" %> </td><td><%= link_to "Edit", edit_instructor_app_path(@instructor2), :class => "btn btn-primary" %></td>
             <td class = "text-success"><%= @instructor2.updated_at %></td>
         <% else %>
-        <td><%= link_to 'None - Create New Intructor Application', new_instructor_app_path %></td>
+        <td class = "text-danger">None </td><td><%= link_to 'Create New', new_instructor_app_path, :class => "btn btn-warning" %></td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>
