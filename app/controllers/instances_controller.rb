@@ -16,6 +16,11 @@ class InstancesController < ApplicationController
   # GET /instances/1.json
   def show
     @instructors = InstructorApp.where(instance_id: @instance.id) || []
+    @instructor1 = @instructors.first
+    if @instructors.first != @instructors.last
+        @instructor2 = @instructors.last
+    end
+    
   end
 
   # GET /instances/new
@@ -26,6 +31,7 @@ class InstancesController < ApplicationController
 
   # GET /instances/1/edit
   def edit
+    @courses = Course.all
   end
 
   # POST /instances
