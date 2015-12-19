@@ -57,7 +57,7 @@
             <% instruct2 = Instructor.find(@instructors[1]).name  %>
             <td><%= link_to "#{instruct2}'s Application", edit_instructor_app_path(@instructors.first)%></td>
         <% else %>
-            <td><%= link_to 'Create New Intructor Application', new_instructor_app_path %></td>
+            <td><%= link_to 'Create New Instructor Application', new_instructor_app_path %></td>
             <td class = "text-danger">NOT SUBMITTED</td>
         <% end %>
     </tr>
