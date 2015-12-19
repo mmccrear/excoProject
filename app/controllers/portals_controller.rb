@@ -1,5 +1,5 @@
 class PortalsController < ApplicationController
-  before_action :set_portal, only: [:edit, :update, :destroy]
+  before_action :set_portal, :authenticate_user, only: [:edit, :update, :destroy]
 
   # GET /portals
   # GET /portals.json
@@ -12,7 +12,7 @@ class PortalsController < ApplicationController
   # GET /portals/1
   # GET /portals/1.json
   def show
-    @instances = Instance.all
+    @instances = Instance.where(user_id: current_user.id)
   end
 
   # GET /portals/new

@@ -67,7 +67,6 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
-  #get '/renewal' => 'application_renewals#app_renewals'
   #get '/new_courses/new' => 'new_courses#new_courses'
   #post '/new_courses/new' => 'new_courses#show'
 end

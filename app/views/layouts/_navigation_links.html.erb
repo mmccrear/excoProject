@@ -1,6 +1,11 @@
   <li id="title_link"><%= link_to 'Exco', root_path %></li>
 <% if user_signed_in? %>
-  <li><%= link_to 'Account (' + current_user.email + ')', portal_path(current_user.id) %></li>
+  <% userInstructor = Instructor.where(user_id: current_user.id).first %>
+  <% if(userInstructor.blank?) %>
+  <li><%= link_to "Account (#{current_user.id})", portal_path(current_user.id) %></li>
+  <% else %>
+  <li><%= link_to "Account (#{userInstructor.name})", portal_path(current_user.id) %></li>
+  <% end %>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 
 <% else %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218190555) do
+ActiveRecord::Schema.define(version: 20151219020110) do
 
   create_table "application_renewals", force: :cascade do |t|
     t.string   "name"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20151218190555) do
     t.text     "status"
     t.integer  "new_course_id"
     t.integer  "renewal_id"
+    t.integer  "user_id"
   end
 
   create_table "instructor_apps", force: :cascade do |t|

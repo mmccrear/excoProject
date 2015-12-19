@@ -1,5 +1,9 @@
 class InstancesController < ApplicationController
-  before_action :set_instance, only: [:show, :edit, :update, :destroy]
+  before_action [:set_instance, :authenticate_user!], only: [:show, :edit, :update, :destroy]
+  before_action :only=>:index do
+    redirect_to new_user_session_path unless current_user
+    redirect_to portal_path(current_user.id) unless current_user.admin?
+  end
 
   # GET /instances
   # GET /instances.json
@@ -33,6 +37,7 @@ class InstancesController < ApplicationController
   # POST /instances.json
   def create
     @instance = Instance.new(instance_params)
+    @instance.user_id = instance_params[:user_id]
     if params[:title] != ""
         @instance.title = params[:title]
         @instance.renewal = true
@@ -44,13 +49,13 @@ class InstancesController < ApplicationController
       @instance.renewal = false
       @course.save()
       @instance.title = params[:new_title]
+      @instance.save()
       #@course.instances << @instance
-    end
-    
+    end    
 
     respond_to do |format|
       if @instance.save
-        format.html { redirect_to @instance, notice: 'Instance was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instance was successfully created.' }
         format.json { render :show, status: :created, location: @instance }
       else
         format.html { render :new }
@@ -91,6 +96,6 @@ class InstancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instance_params
-      params.require(:instance).permit(:year, :semester, :section)
+      params.require(:instance).permit(:year, :semester, :section, :user_id)
     end
 end

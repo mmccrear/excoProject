@@ -27,6 +27,7 @@ class NewCoursesController < ApplicationController
     @instances = Instance.all     #eventually filter by users
     @instructors1 = InstructorApp.all   #don't know if we need to do this here? maybe in instance?
     @instructors2 = InstructorApp.all
+    @current_user = current_user
   end
 
   # GET /new_courses/1/edit

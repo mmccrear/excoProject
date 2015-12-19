@@ -1,4 +1,5 @@
 <div class = "container">
+<h1>Course Renewal Application </h1>
 <%= form_for(@application_renewal) do |f| %>
   <% if @application_renewal.errors.any? %>
     <div id="error_explanation">
@@ -12,30 +13,6 @@
     </div>
   <% end %>
 
-  <div class = "form-group">
-         <h3>Course Information</h3> <br>
-
-  <div class="field">
-    <label for= "name">
-	    <b>Name of Course</b>
-            <p> This must be the official course title. No abbreviations, please.</p></label><br>
-    <select name = "name">
-        <%= options_for_select(@instances.map{ |i| [i.title, i.title]}) %>
-        </select><br>
-  </div>
-
-  <div class="field">
-    <%= f.label :semester %><br>
-    <%= f.radio_button :semester, "Fall", :checked => true %> Fall &nbsp;
-    <%= f.radio_button :semester, "Spring" %> Spring
-  </div>
-
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
-  </div>
- </div>
-<hr>
 
   <div class = "form-group row">
       <h3>Course Details</h3>
@@ -45,7 +22,7 @@
     <b>For how many credits should this course be offered?</b><br>
        Note that two credit courses are much more rigorous than one credit courses (refer to course guidelines for more information). New courses are rarely allowed to be taught for two credits.
     </label>
-    <%= f.number_field :credits %><br><br>
+    <%= f.select :credits, options_for_select([1,2],1)%><br><br>
   </div>
 
   <div class="field">
@@ -68,6 +45,7 @@
     <%= f.text_area :engagement %><br><br>
   </div>
 
+  <%= f.hidden_field :instance_id, :value=>params[:instance] %>
   <div class="actions">
     <%= f.submit %>
   </div>

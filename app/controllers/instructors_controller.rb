@@ -26,12 +26,10 @@ class InstructorsController < ApplicationController
   # POST /instructors.json
   def create
     @instructor = Instructor.new(instructor_params)
-    @user = User.find(params[:user])
-    #@instructor.user_id = @user.id
 
     respond_to do |format|
       if @instructor.save
-        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+        format.html { redirect_to portal_path(current_user.id), notice: 'Instructor was successfully created.' }
         format.json { render :show, status: :created, location: @instructor }
       else
         format.html { render :new }
@@ -72,6 +70,6 @@ class InstructorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instructor_params
-      params.require(:instructor).permit(:email, :name, :tnumber, :pronouns, :address, :phone)
+      params.require(:instructor).permit(:email, :name, :tnumber, :pronouns, :address, :phone, :user_id)
     end
 end

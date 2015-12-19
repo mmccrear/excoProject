@@ -1,4 +1,5 @@
 <div class = "container">
+<h1>New Course Application</h1>
 <%= form_for(@new_course) do |f| %>
   <% if @new_course.errors.any? %>
     <div id="error_explanation">
@@ -11,42 +12,13 @@
       </ul>
     </div>
   <% end %>
- <div class = "form-group">
-        <h3>Course Information</h3> <br>
-
-  <div class="field">
-    <label for= "name">
-            <b>Title of course</b>
-            <p> This must be the official course title. No abbreviations, please.</p></label><br>
-    <select name = "name">
-        <%= options_for_select(@instances.map{ |i| [i.title, i.title]}) %>
-        </select><br>
-  </div>
-  <div class="field">
-    <%= f.label :semester %><br>
-      <%= f.radio_button :semester, "Fall", :checked => true %> Fall &nbsp;
-      <%= f.radio_button :semester, "Spring" %> Spring
-      
-  </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
-  </div>
-</div>
-<hr>
-    <div class = "form-group ">
-
-
+    <h3>Course Details</h3>
 If there are multiple instructors for the course, only one of you can be responsible for registration and grades on PRESTO.<br>
     <label for="presto">Presto responsibility: </label><br>
     <input type = "radio" name = "presto" value = "Instructor 1" checked> Instructor 1 <br>
-    <input type = "radio" name = "presto" value = "Instructor 2"> Instructor 2 <br>
-    </div>
+    <input type = "radio" name = "presto" value = "Instructor 2"> Instructor 2 <br><br>
     
-    <hr>
 
-<div class = "form-group row">
-    <h3>Course Details</h3>
   <div class="field">
     <label for="division">What division would you like your course to be listed under in the ExCo Course Catalog?</label><br>
       <%= f.radio_button :divison, "Community and Society", :checked => true %> Community and Society<br>
@@ -83,7 +55,7 @@ If there are multiple instructors for the course, only one of you can be respons
     <label for="credits">
     <b>For how many credits should this course be offered?</b><br>
         Note that two credit courses are much more rigorous than one credit courses (refer to course guidelines for more information). New courses are rarely allowed to be taught for two credits.</label><br>
-    <%= f.number_field :credits %><br><br>
+    <%= f.select :credits, options_for_select([0,1,2],1) %><br><br>
   </div>
   <div class="field">
     <label for = "hours_meet">How many hours per week do you plan to meet?</label><br>
@@ -107,6 +79,5 @@ If there are multiple instructors for the course, only one of you can be respons
   <div class="actions">
     <%= f.submit %>
   </div>
-    </div>
 <% end %>
     </div>

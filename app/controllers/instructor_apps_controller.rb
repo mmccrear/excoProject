@@ -14,6 +14,7 @@ class InstructorAppsController < ApplicationController
 
   # GET /instructor_apps/new
   def new
+    @current_user = current_user
     @instructor_app = InstructorApp.new
     @instructors = Instructor.all    #filter by users
     @instances = Instance.all        #filter by users
